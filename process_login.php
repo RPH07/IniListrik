@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($user['role'] === 'administrator') {
                 header('Location: admin_dashboard.php');
             } else {
+                $_SESSION['id_pelanggan'] = $user['id_user'];
                 header('Location: customer_dashboard.php');
             }
             exit;

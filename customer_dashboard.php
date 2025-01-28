@@ -120,7 +120,6 @@ while ($row = $total_tagihan_result->fetch_assoc()) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Dashboard</title>
     <link rel="stylesheet" href="style/dashboard.css">
-    <link rel="stylesheet" href="style/nav.css">
 </head>
 <body>
     <div class="dashboard-container">
@@ -129,7 +128,7 @@ while ($row = $total_tagihan_result->fetch_assoc()) {
             <h3>Menu</h3>
             <ul>
                 <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Penggunaan</a></li>
+                <li><a href="penggunaan.php">Penggunaan</a></li>
                 <li><a href="#">Tagihan</a></li>
                 <li><a href="#">Pengaturan</a></li>
                 <li><a href="logout.php">logout</a></li>
@@ -153,38 +152,6 @@ while ($row = $total_tagihan_result->fetch_assoc()) {
                     <p><?php echo $bulan_aktif; ?></p>
                 </div>
             </div>
-
-            <h2>Penggunaan dan Tagihan Listrik</h2>
-            <table class="usage-table">
-                <thead>
-                    <tr>
-                        <th>Bulan</th>
-                        <th>Tahun</th>
-                        <th>Penggunaan (kWh)</th>
-                        <th>Tagihan (Rp)</th>
-                    </tr>
-                </thead>
-                <tbody>
-    <?php
-    if (isset($usage_result) && $usage_result->num_rows > 0) {
-        while ($row = $usage_result->fetch_assoc()) {
-            $penggunaan = isset($row['penggunaan']) ? $row['penggunaan'] : 0;
-            $tagihan = isset($row['tagihan']) ? number_format($row['tagihan'], 0, ',', '.') : '0';
-
-            echo "<tr>
-                <td>{$row['bulan']}</td>
-                <td>{$row['tahun']}</td>
-                <td>{$penggunaan}</td>
-                <td>Rp{$tagihan}</td>
-            </tr>";
-        }
-    } else {
-        echo "<tr><td colspan='4'>Tidak ada data penggunaan.</td></tr>";
-    }
-    ?>
-</tbody>
-
-            </table>
         </main>
     </div>
 </body>
