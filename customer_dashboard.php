@@ -94,22 +94,6 @@ if ($result->num_rows > 0) {
     $error_message = "Data pelanggan tidak ditemukan.";
 }
 
-// Debug Total Penggunaan
-echo "Total Penggunaan Query: ";
-$total_usage_stmt->execute();
-$total_usage_result = $total_usage_stmt->get_result();
-while ($row = $total_usage_result->fetch_assoc()) {
-    print_r($row);
-}
-
-// Debug Total Tagihan
-echo "Total Tagihan Query: ";
-$total_tagihan_stmt->execute();
-$total_tagihan_result = $total_tagihan_stmt->get_result();
-while ($row = $total_tagihan_result->fetch_assoc()) {
-    print_r($row);
-}
-
 ?>
 
 
@@ -119,15 +103,16 @@ while ($row = $total_tagihan_result->fetch_assoc()) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Dashboard</title>
-    <link rel="stylesheet" href="style/dashboard.css">
+    <link rel="stylesheet" href="style/customer.css">
 </head>
 <body>
     <div class="dashboard-container">
         <!-- Sidebar -->
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar">
+            <button id="toggleSidebar">☰</button>
             <h3>Menu</h3>
             <ul>
-                <li><a href="#">Dashboard</a></li>
+                <li><a href="customer_dashboard.php">Dashboard</a></li>
                 <li><a href="penggunaan.php">Penggunaan</a></li>
                 <li><a href="#">Tagihan</a></li>
                 <li><a href="#">Pengaturan</a></li>
@@ -155,4 +140,13 @@ while ($row = $total_tagihan_result->fetch_assoc()) {
         </main>
     </div>
 </body>
+<script>
+    document.getElementById('toggleSidebar').addEventListener('click', function() {
+        var sidebar = document.getElementById('sidebar');
+        var mainContent = document.querySelector('.main-content');
+
+        sidebar.classList.toggle('collapsed');
+        mainContent.classList.toggle('expanded');
+    });
+</script>
 </html>
