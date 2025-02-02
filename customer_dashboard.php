@@ -3,12 +3,12 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// echo "Session User ID: " . $_SESSION['user_id'];
-// if (isset($_SESSION['user_id'])) {
-//     echo "Session User ID: " . $_SESSION['user_id'];
-// } else {
-//     echo "Session User ID tidak diset.";
-// }
+echo "Session User ID: " . $_SESSION['user_id'];
+if (isset($_SESSION['user_id'])) {
+    echo "Session User ID: " . $_SESSION['user_id'];
+} else {
+    echo "Session User ID tidak diset.";
+}
 
 
 

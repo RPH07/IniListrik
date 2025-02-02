@@ -1,4 +1,4 @@
-<?php
+<?php 
 // Include file koneksi database
 include 'includes/db_connection.php';
 
@@ -28,12 +28,6 @@ $result_tarif = $conn->query($sql_tarif);
                 <?= $row['daya'] ?> VA - Rp<?= number_format($row['tarifperkwh'], 2, ',', '.') ?>/kWh
             </option>
         <?php endwhile; ?>
-    </select>
-
-    <label for="role">Role:</label>
-    <select name="role" id="role" required>
-        <option value="pelanggan">Pelanggan</option>
-        <option value="admin">Admin</option>
     </select>
 
     <button type="submit">Daftar</button>
