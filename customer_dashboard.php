@@ -103,19 +103,121 @@ if ($result->num_rows > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Dashboard</title>
-    <link rel="stylesheet" href="style/customer.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.dashboard-container {
+    display: flex;
+}
+
+.sidebar {
+    width: 250px;
+    background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    padding: 5px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: all 0.3s ease;
+}
+
+.sidebar h3 {
+    color: #ecf0f1;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 0.5rem;
+}
+
+.sidebar ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    display: block;
+    padding: 12px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+}
+
+.main-content {
+    margin-left: 250px; /* Initial margin equal to sidebar width */
+    padding: 20px;
+    background-color: #ffffff;
+    transition: margin-left 0.3s ease;
+    width: calc(100% - 250px);
+}
+
+.summary {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+
+.card {
+    background-color: #3498db;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 30%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.usage-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.usage-table th, .usage-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.usage-table th {
+    background-color: #f4f4f4;
+}
+
+.usage-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.usage-table tr:hover {
+    background-color: #f1f1f1;
+}
+    </style>
 </head>
 <body>
     <div class="dashboard-container">
         <!-- Sidebar -->
         <aside class="sidebar" id="sidebar">
-            <button id="toggleSidebar">☰</button>
             <h3>Menu</h3>
             <ul>
                 <li><a href="customer_dashboard.php">Dashboard</a></li>
                 <li><a href="penggunaan.php">Penggunaan</a></li>
-                <li><a href="#">Tagihan</a></li>
-                <li><a href="#">Pengaturan</a></li>
+                <li><a href="tagihan.php">Tagihan</a></li>
                 <li><a href="logout.php">logout</a></li>
             </ul>
         </aside>
@@ -140,13 +242,4 @@ if ($result->num_rows > 0) {
         </main>
     </div>
 </body>
-<script>
-    document.getElementById('toggleSidebar').addEventListener('click', function() {
-        var sidebar = document.getElementById('sidebar');
-        var mainContent = document.querySelector('.main-content');
-
-        sidebar.classList.toggle('collapsed');
-        mainContent.classList.toggle('expanded');
-    });
-</script>
 </html>
