@@ -1,15 +1,13 @@
 <?php
+// Include file koneksi database
 include 'includes/db_connection.php';
 
+// Periksa apakah data dikirim melalui POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pelanggan_id = $_POST['pelanggan_id'];
     $bulan = $_POST['bulan'];
     $tahun = $_POST['tahun'];
     $penggunaan = $_POST['penggunaan'];
-
-    // Tarif per kWh
-    $tarif_per_kwh = 1500;
-    $tagihan = $penggunaan * $tarif_per_kwh;
 
     // Masukkan data ke tabel penggunaan
     $query = "INSERT INTO penggunaan (pelanggan_id, bulan, tahun, penggunaan, tagihan) 
@@ -22,6 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Error: " . $conn->error;
     }
 }
-
+// Tutup koneksi
 $conn->close();
 ?>
