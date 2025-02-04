@@ -86,8 +86,9 @@ if (isset($_GET['id'])) {
                     </select>
                 </div>
 
-                <div class="text-center">
-                    <button type="submit" class="btn btn-update w-100">Update Status</button>
+                <div class="text-center d-flex gap-2">
+                    <button type="submit" class="btn btn-update w-75">Update Status</button>
+                    <a href="admin_dashboard.php" class="btn btn-danger w-25">Batal</a>
                 </div>
             </form>
         </div>
